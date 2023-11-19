@@ -1,0 +1,18 @@
+{
+  "contract": [
+    {
+      "id": "1",
+      "image": "/small-banner.jpg",
+      "contractid": "1911CTYABC",
+      "propid": "1911HCM",
+      "name": "Phạm Quốc Bảo",
+      "number": "0707071118",
+      "address": "232 Đoàn Văn Bơ",
+      "cmnd": "012345676",
+      "createdAt": "21/11/2023",
+      "expiryDate": "21/11/2025",
+      "price": "10.000.000",
+      "status": "Deposited"
+    }
+  ]
+}

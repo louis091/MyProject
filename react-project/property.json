@@ -1,0 +1,58 @@
+{
+  "property": [
+    {
+      "id": 1,
+      "image": "/small-banner.jpg",
+      "type": "Chung Cư",
+      "project": "Sealan",
+      "country": "Quy Nhơn",
+      "address": "3",
+      "scale": "100 SQRT",
+      "description": "Đẹp nha",
+      "room": "2",
+      "service": "Wifi, Chỗ Đậu Xe",
+      "price": "3.000.000.000",
+      "status": "Available"
+    },
+    {
+      "id": 2,
+      "image": "/small-banner.jpg",
+      "type": "Chung Cư",
+      "project": "Vin Homes",
+      "country": "Hồ Chí Minh",
+      "address": "3",
+      "scale": "100 SQRT",
+      "description": "Dẹp thiệt nha ní",
+      "room": "2",
+      "service": "Wifi, Chỗ Đậu Xe",
+      "price": "3.000.000.000",
+      "status": "Available"
+    },
+    {
+      "project": "Goldview",
+      "type": "Chung Cư",
+      "description": "Đẹp",
+      "country": "TP  HCM",
+      "district": "Quận 4",
+      "address": "162 Bến Vân Đồn",
+      "scale": "200",
+      "room": "5",
+      "service": "WIFI, Chỗ đậu xe hơi",
+      "price": "3.000.000",
+      "id": 3
+    },
+    {
+      "project": "Sun House",
+      "type": "Chung Cư",
+      "description": "Đẹp điên",
+      "country": "Bạc Liêu",
+      "district": "Quận 4",
+      "address": "192 Bến Vân Đồn P5",
+      "scale": "Khá to",
+      "room": "25",
+      "service": "Dịch vụ thì ok ",
+      "price": "5000000000",
+      "id": 4
+    }
+  ]
+}

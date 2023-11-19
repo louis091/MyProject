@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "image": "/small-banner.jpg",
+    "type": "Chung Cư",
+    "project": "Apple",
+    "country": "Airpod Pro Maxs",
+    "address": "3",
+    "scale": "100 SQRT",
+    "room": "2",
+    "service": "Wifi, Chỗ Đậu Xe",
+    "price": "3.000.000.000",
+    "status": "Available"
+  },
+  {
+    "id": 2,
+    "image": "/small-banner.jpg",
+    "type": "Chung Cư",
+    "project": "Apple",
+    "country": "Airpod Pro Maxs",
+    "address": "3",
+    "scale": "100 SQRT",
+    "room": "2",
+    "service": "Wifi, Chỗ Đậu Xe",
+    "price": "3.000.000.000",
+    "status": "Available"
+  }
+]

@@ -5,7 +5,6 @@ export default function PropertyCard() {
   const [properties, setProperty] = useState([]);
 
   function FetchData() {
-    console.log("TESTTTT");
     fetch("http://localhost:7154/property")
       .then((response) => {
         if (!response.ok) {
@@ -28,17 +27,19 @@ export default function PropertyCard() {
             <div className="row bg-light py-3 border-3 border-slate-800">
               <div className="col-3">
                 <div className="product-banner flex flex-wrap">
-                  <img src={property.image} alt="" />
+                  <img src="/small-banner.jpg" alt="" />
                 </div>
               </div>
               <div className="col-3">
                 <div className="product-content px-3 py-3">
-                  <p>key={index}</p>
                   <p className="font-bold text-xl">
                     Tên Bất Động Sản: {property.project}
                   </p>
                   <p>
                     <b>Loại</b>: {property.type}
+                  </p>
+                  <p>
+                    <b>Mã Bất Động Sản</b>: {property.propid}
                   </p>
                   <p>
                     <b>Tỉnh Thành</b>: {property.country}

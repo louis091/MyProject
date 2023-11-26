@@ -1,6 +1,6 @@
 import React from "react";
-import PropertyCard from "./PropertyCard";
 import { useNavigate } from "react-router-dom";
+import Home from "../Pages/Home";
 
 function AddProperty() {
   const navigat = useNavigate();
@@ -11,6 +11,7 @@ function AddProperty() {
     const formData = new FormData(event.target);
 
     const property = Object.fromEntries(formData.entries());
+    property["propid"] = "BDS00001";
 
     if (
       !property.project ||
@@ -38,7 +39,7 @@ function AddProperty() {
         }
         return response.json();
       })
-      .then((data) => console.log(data))
+      .then(() => navigat(<Home />))
       .catch((error) => {
         console.log("Error: ", error);
       });
@@ -68,6 +69,21 @@ function AddProperty() {
                     name="project"
                     className="form-control"
                     aria-describedby="basic-addon1"
+                  />
+                </div>
+              </div>
+              <div className="input-group mb-3">
+                <div className="col-md-3">
+                  <label className="form-label">Mã BDS</label>
+                </div>
+                <div className="col-md-9">
+                  <input
+                    type="text"
+                    defaultValue={"BDS00001"}
+                    name="propid"
+                    className="form-control"
+                    aria-describedby="basic-addon1"
+                    disabled
                   />
                 </div>
               </div>

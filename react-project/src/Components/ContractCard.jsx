@@ -32,9 +32,9 @@ function ContractCard() {
               </div>
               <div className="col-3">
                 <div className="product-content px-3 py-3">
-                  <p>{index}</p>
                   <p className="font-bold text-xl">
                     Mã Hợp Đồng: {contract.contractid}
+                    {contract.id}
                   </p>
                   <p>
                     <b>Mã Bất Động Sản</b>: {contract.propid}

@@ -22,9 +22,11 @@ function Home() {
                   <h4>SUPER SALES FOR HOUSES</h4>
                   <h5>LOS ANGELES</h5>
                   <p>From $999.00 or $60.62/ square.</p>
-                  <Link className="button mt-9 bg-slate-800 py-2 px-2 text-white">
-                    BUY NOW
-                  </Link>
+                  <div className="button-container py-3">
+                    <Link className="button mt-9 bg-slate-800 ml-20 top-24 py-2 px-4 text-white">
+                      BUY NOW
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

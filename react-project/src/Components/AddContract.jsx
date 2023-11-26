@@ -1,22 +1,48 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { redirect, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Home from "../Pages/Home";
 
 function AddContract() {
-  const navigat = useNavigate();
+  const ContractDate = new Date().getDate();
+  const ContractMonth = new Date().getMonth() + 1;
+  const ContractID = "HD" + ContractDate + "" + ContractMonth + "00001";
+  const PropID = "BDS" + "00001";
+
+  const getID = fetch("http://localhost:7155/contract")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Unexpected Server Response");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => console.log("Error: ", error));
+
+  const printID = (b) => {
+    getID.then((a) => {
+      const len = Object.keys(a).length;
+      const id = a[len - 1]["id"];
+      const b = id;
+      return b;
+    });
+  };
 
   function handleSubmit(event) {
     event.preventDefault();
-
     const formData = new FormData(event.target);
-
     const contract = Object.fromEntries(formData.entries());
-
+    contract["contractid"] = ContractID;
+    printID();
+    contract["propid"] = PropID;
     if (
       !contract.name ||
       !contract.dob ||
       !contract.cmnd ||
       !contract.address ||
-      !contract.propid ||
       !contract.createdAt ||
       !contract.value ||
       !contract.deposit
@@ -24,6 +50,7 @@ function AddContract() {
       console.log("Please provide all the required informations");
       return;
     }
+
     fetch("http://localhost:7155/contract", {
       method: "POST",
       headers: {
@@ -37,7 +64,9 @@ function AddContract() {
         }
         return response.json();
       })
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+      })
       .catch((error) => {
         console.log("Error: ", error);
       });
@@ -57,6 +86,21 @@ function AddContract() {
         >
           <div className="row g-3">
             <div className="col-md-6">
+              <div className="input-group mb-3">
+                <div className="col-md-3">
+                  <label className="form-label">Mã HD:</label>
+                </div>
+                <div className="col-md-9">
+                  <input
+                    type="text"
+                    name="contractid"
+                    defaultValue={ContractID}
+                    className="form-control"
+                    aria-describedby="basic-addon1"
+                    disabled
+                  />
+                </div>
+              </div>
               <div className="input-group mb-3">
                 <div className="col-md-3">
                   <label className="form-label">Họ và Tên:</label>
@@ -87,14 +131,16 @@ function AddContract() {
             <div className="col-md-6">
               <div className="input-group mb-3">
                 <div className="col-md-3">
-                  <label className="form-label">Địa Chỉ</label>
+                  <label className="form-label">Mã Bất Động Sản</label>
                 </div>
                 <div className="col-md-9">
                   <input
                     type="text"
-                    name="address"
+                    name="propid"
+                    defaultValue={PropID}
                     className="form-control"
                     aria-describedby="basic-addon1"
+                    disabled
                   />
                 </div>
               </div>
@@ -115,12 +161,12 @@ function AddContract() {
             <div className="col-md-6">
               <div className="input-group mb-3">
                 <div className="col-md-3">
-                  <label className="form-label">Mã Bất Động Sản</label>
+                  <label className="form-label">Địa Chỉ</label>
                 </div>
                 <div className="col-md-9">
                   <input
                     type="text"
-                    name="propid"
+                    name="address"
                     className="form-control"
                     aria-describedby="basic-addon1"
                   />

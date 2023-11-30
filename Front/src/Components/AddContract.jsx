@@ -30,7 +30,7 @@ function AddContract() {
           </span>
         </div>
         <form
-          action=""
+          action="POST"
           className="form-horizontal py-5 h-auto ml-10 mr-10 px-6"
           onSubmit={handleSubmit(contractSubmit)}
         >

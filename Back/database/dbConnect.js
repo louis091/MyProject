@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const dbConnection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '0939872615',
+  password: '',
   database: 'vluapp'
 })
 

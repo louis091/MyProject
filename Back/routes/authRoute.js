@@ -2,9 +2,9 @@ const express = require('express');
 const dbConnection = require('../database/dbConnect');
 const router = express.Router();
 
-router.get("/contract", (req, res) => {
+router.get("/contract", async (req, res) => {
   try {
-    const request = dbConnection;
+    const request = await dbConnection;
     request.query("SELECT * FROM contract", (err, result) => {
       console.log('TEST');
       res.status(200).json({ success: true, data: result});
@@ -20,13 +20,13 @@ router.post("/add-contract", async (req, res) => {
   } = req.body;
 
   try {
-    const result = dbConnection.query("INSERT INTO contract (createdAt, deposit, name, dob, cmnd, address, value, number) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [createdAt, deposit, name, dob,cmnd,address, value, number])
+    const result = await dbConnection.query("INSERT INTO contract (createdAt, deposit, name, dob, cmnd, address, value, number) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [createdAt, deposit, name, dob,cmnd,address, value, number])
 
     if(result) {
-      res.status(200).json({ success: true, data: result });
+      res.json({ success: true });
     } 
   } catch (err) {
-    res.status(500).json({ success: false });
+    res.json({ success: false });
     console.log(err);
   }
 });

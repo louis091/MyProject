@@ -138,7 +138,6 @@ function AddContract() {
                   <input
                     {...register("dob")}
                     type="text"
-                    name="dob_year"
                     className="form-control"
                     aria-describedby="basic-addon1"
                     size="4"

@@ -1,6 +1,26 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 function AddProperty() {
+  const {
+    register,
+    handleSubmit,
+    formState: { error },
+  } = useForm();
+  const navigate = useNavigate();
+
+  const propertySubmit = async (values) => {
+    console.log(values);
+    const { data } = await axios.post(
+      "http://localhost:3000/api/add-property",
+      values
+    );
+    if (data.success === true) {
+      alert("Thêm Bất Động Sản thành công");
+      navigate("/property");
+    }
+  };
   return (
     <>
       <div className="container-fluid border-3 bg-slate-300">
@@ -10,9 +30,9 @@ function AddProperty() {
           </span>
         </div>
         <form
-          action=""
+          action="POST"
           className="form-horizontal py-5 h-auto ml-10 mr-10 px-6"
-          onSubmit={(event) => handleSubmit(event)}
+          onSubmit={handleSubmit(propertySubmit)}
         >
           <div className="row g-3">
             <div className="col-md-6">
@@ -22,8 +42,8 @@ function AddProperty() {
                 </div>
                 <div className="col-md-9">
                   <input
+                    {...register("name")}
                     type="text"
-                    name="project"
                     className="form-control"
                     aria-describedby="basic-addon1"
                   />
@@ -31,16 +51,15 @@ function AddProperty() {
               </div>
               <div className="input-group mb-3">
                 <div className="col-md-3">
-                  <label className="form-label">Mã BDS</label>
+                  <label className="form-label">Mã Bất Động Sản</label>
                 </div>
                 <div className="col-md-9">
                   <input
+                    readOnly
                     type="text"
-                    defaultValue={"BDS00001"}
-                    name="propid"
+                    placeholder="HỆ THỐNG TỰ CẤP"
                     className="form-control"
                     aria-describedby="basic-addon1"
-                    disabled
                   />
                 </div>
               </div>
@@ -50,21 +69,8 @@ function AddProperty() {
                 </div>
                 <div className="col-md-9">
                   <input
+                    {...register("type")}
                     type="text"
-                    name="type"
-                    className="form-control"
-                    aria-describedby="basic-addon1"
-                  />
-                </div>
-              </div>
-              <div className="input-group mb-3">
-                <div className="col-md-3">
-                  <label className="form-label">Mô Tả</label>
-                </div>
-                <div className="col-md-9">
-                  <input
-                    type="text"
-                    name="description"
                     className="form-control"
                     aria-describedby="basic-addon1"
                   />
@@ -78,8 +84,8 @@ function AddProperty() {
                 </div>
                 <div className="col-md-9">
                   <select
+                    {...register("country")}
                     className="form-select"
-                    name="country"
                     aria-label="Default select example"
                   >
                     <option value="">Chọn Tỉnh Thành</option>
@@ -156,8 +162,8 @@ function AddProperty() {
                 </div>
                 <div className="col-md-9">
                   <select
+                    {...register("district")}
                     className="form-select"
-                    name="district"
                     aria-label="Default select example"
                   >
                     <option value="">Chọn Quận / Huyện</option>
@@ -182,8 +188,8 @@ function AddProperty() {
                 </div>
                 <div className="col-md-9">
                   <input
+                    {...register("address")}
                     type="text"
-                    name="address"
                     className="form-control"
                     aria-describedby="basic-addon1"
                   />
@@ -197,8 +203,8 @@ function AddProperty() {
                 </div>
                 <div className="col-md-9">
                   <input
+                    {...register("scale")}
                     type="text"
-                    name="scale"
                     className="form-control"
                     aria-describedby="basic-addon1"
                   />
@@ -212,8 +218,8 @@ function AddProperty() {
                 </div>
                 <div className="col-md-9">
                   <input
+                    {...register("rooms")}
                     type="text"
-                    name="room"
                     className="form-control"
                     aria-describedby="basic-addon1"
                   />
@@ -227,8 +233,8 @@ function AddProperty() {
                 </div>
                 <div className="col-md-9">
                   <input
+                    {...register("service")}
                     type="text"
-                    name="service"
                     className="form-control"
                     aria-describedby="basic-addon1"
                   />
@@ -242,8 +248,8 @@ function AddProperty() {
                 </div>
                 <div className="col-md-9">
                   <input
+                    {...register("value")}
                     type="text"
-                    name="price"
                     className="form-control"
                     aria-describedby="basic-addon1"
                   />

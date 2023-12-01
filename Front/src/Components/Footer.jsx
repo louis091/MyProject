@@ -8,7 +8,8 @@ function Footer() {
           <div className="row">
             <div className="col-12">
               <p className="text-center mb-0 text-white">
-                &copy; {new Date().getDate()}; Powered by Louis Pham
+                &copy; {new Date().getDate()}/{new Date().getMonth() + 1}/
+                {new Date().getFullYear()}; Powered by Louis Pham
               </p>
             </div>
           </div>

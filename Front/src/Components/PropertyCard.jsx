@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { formatCurrency } from "../assets/format";
 
 export default function PropertyCard() {
   const [properties, setProperty] = useState([]);
 
-  function FetchData() {
-    fetch("http://localhost:7154/property")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Unexpected Server Response");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setProperty(data);
-      })
-      .catch((error) => console.log("Error: ", error));
-  }
+  const fetchProperty = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:3000/api/property");
+      if (data.success === true) {
+        setProperty(data.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-  useEffect(() => FetchData(), []);
+  useEffect(() => {
+    fetchProperty();
+  }, []);
   return (
     <>
-      {properties.map((property, index) => {
+      {properties.map((property) => {
         return (
           <div className="container-fluid py-3">
             <div className="row bg-light py-3 border-3 border-slate-800">
@@ -32,17 +32,20 @@ export default function PropertyCard() {
               </div>
               <div className="col-3">
                 <div className="product-content px-3 py-3">
-                  <p className="font-bold text-xl">
-                    Tên Bất Động Sản: {property.project}
+                  <p>
+                    <b>Tên Bất Động Sản</b>: {property.name}
                   </p>
                   <p>
                     <b>Loại</b>: {property.type}
                   </p>
                   <p>
-                    <b>Mã Bất Động Sản</b>: {property.propid}
+                    <b>Mã Bất Động Sản</b>: {property.propID}
                   </p>
                   <p>
                     <b>Tỉnh Thành</b>: {property.country}
+                  </p>
+                  <p>
+                    <b>Quận/Huyện</b>: {property.district}
                   </p>
                   <p>
                     <b>Địa Chỉ</b>: {property.address}
@@ -52,16 +55,19 @@ export default function PropertyCard() {
                     {property.scale}
                   </p>
                   <p>
-                    <b>Số Lượng Phòng</b>: {property.room}
+                    <b>Số Lượng Phòng</b>: {property.rooms}
                   </p>
                   <p>
                     <b>Dịch vụ</b>: {property.service}
                   </p>
                   <p>
-                    <b>Giá</b>: {property.price}
+                    <b>Giá</b>: {formatCurrency(property.value)}
                   </p>
                   <p>
-                    <b>Trạng Thái</b>: {property.status}
+                    <b>Trạng Thái</b>:{" "}
+                    <span className="text-green-600 fw-bold bg-white">
+                      AVAILABLE
+                    </span>
                   </p>
                 </div>
               </div>
